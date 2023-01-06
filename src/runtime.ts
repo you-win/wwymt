@@ -16,11 +16,16 @@
     };
 
     globalThis.rust = {
-        ping: async (): Promise<string> => {
-            return await ops.ping();
-        },
-        sum: (arr: any[]): number => {
-            return ops.sum(arr);
+        debug: {
+            ping: async (): Promise<string> => {
+                return await ops.ping();
+            },
+            sum: (arr: any[]): number => {
+                return ops.sum(arr);
+            },
+            echo: (text: string): string => {
+                return ops.echo(text);
+            }
         },
         get: async (url: string, headers: string[]): Promise<string> => {
             return await ops.get(url, headers);

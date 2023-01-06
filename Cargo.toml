@@ -5,18 +5,34 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+default = ["minifb"]
+minifb = ["dep:minifb"]
+softbuffer = ["dep:softbuffer", "winit"]
+pixels = ["dep:pixels", "winit"]
+winit = ["dep:winit"]
+
 [dependencies]
+# Utilities
 anyhow = "1.0"
 thiserror = "1.0"
 log = "0.4.0"
 env_logger = "0.10.0"
-
-minifb = "0.23"
-deno_core = "0.164"
-deno_ast = { version = "0.22", features = ["transpiling"] }
 tokio = { version = "1", features = ["full"] }
 
-reqwest = { version = "0.11", features = ["json"] }
+# Scripting
+deno_core = "0.164"
+deno_ast = { version = "0.22", features = ["transpiling"] }
 
+# Windowing
+winit = { version = "0.27.5", optional = true }
+
+# Rendering
+minifb = { version = "0.23", optional = true }
+softbuffer = { git = "https://github.com/rust-windowing/softbuffer.git", optional = true }
+pixels = { version = "0.11", optional = true }
+
+# Network
+reqwest = { version = "0.11", features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"

@@ -18,14 +18,24 @@ type Ops = any;
  */
 declare var rust: {
     /**
-     * Returns pong.
+     * Functions that don't impact how the program runs but are helpful for debugging.
      */
-    ping(): Promise<string>;
-    /**
-     * Adds an array of numbers.
-     * @param arr The numbers to add up.
-     */
-    sum(arr: any[]): number;
+    debug: {
+        /**
+         * Returns pong.
+         */
+        ping(): Promise<string>;
+        /**
+         * Adds an array of numbers.
+         * @param arr The numbers to add up.
+         */
+        sum(arr: any[]): number;
+        /**
+         * Passes text to the JS runtime and immediately returns it.
+         * @param text The text to echo.
+         */
+        echo(text: string): string;
+    }
     /**
      * Send a GET request to the given url with the given headers.
      * @param url The url to send the request to.

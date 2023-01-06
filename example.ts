@@ -26,8 +26,10 @@ async function main(): Promise<void> {
     log.warn("THIS IS A WARNING");
     log.error("This is an error log.");
 
-    console.log(await rust.ping());
-    console.log(rust.sum([1, 2, 3, 4]));
+    console.log(rust.debug.echo("echo!"));
+
+    console.log(await rust.debug.ping());
+    console.log(rust.debug.sum([1, 2, 3, 4]));
 
     [1, 2, 3].forEach((v: number) => console.log(v));
 

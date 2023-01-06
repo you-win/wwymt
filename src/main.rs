@@ -15,7 +15,7 @@ async fn main() -> Result<(), Error> {
 
     log::info!("Starting app");
 
-    let app = app::App::new();
+    let mut app = app::App::new().await?;
 
     app.start().await
 }
